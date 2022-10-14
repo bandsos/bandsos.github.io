@@ -21,7 +21,6 @@ jobs:
       run: |
         git config --global user.email "github-actions@users.noreploy.github.com"
         git config --global user.name "github-actions"
-        git remote set-url origin https://${{ secrets.DEPLOY_TOKEN }}@github.com/jamal919/bandsos.git
         CI=false npm run deploy
     - name: Updating website
       run: echo "Update website"
