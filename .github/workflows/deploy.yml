@@ -1,0 +1,26 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Nodejs ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install packages
+      run: npm install
+    - name: Deploy to GH pages
+      run: |
+        git config --global user.email "github-actions@users.noreploy.github.com"
+        git config --global user.name "github-actions"
+        npm run deploy
+    - name: Updating website
+      run: echo "Update website"
