@@ -73,20 +73,20 @@ function Map({dataurl, config, forecast, timestep}) {
       {
         forecast.forecasts.elev.layers[1].stations.map( (station) => (
           <Marker
-            key={station.id}
-            position={[station.lat, station.lon]}
+            key={station.ID}
+            position={[station.Lat, station.Lon]}
             icon={icon_level}
           >
             <Popup maxWidth={"80%"}>
               <Tooltip>
-                Station ID: {station.id} <br />
-                Station Name: {station.name} <br />
-                Longitude: {station.lon} <br />
-                Latitude: {station.lat} <br />
+                Station ID: {station.ID} <br />
+                Station Name: {station.Name} <br />
+                Longitude: {station.Lon} <br />
+                Latitude: {station.Lat} <br />
               </Tooltip>
               <DyGraph
-              url={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[1].type + '/' + station.id + '.csv'}
-              title={station.name + ' - ' + station.org}
+              url={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[1].type + '/' + station.ID + '.csv'}
+              title={station.Name + ' - ' + station.Org}
               />
             </Popup>
           </Marker>  
@@ -103,7 +103,7 @@ function Map({dataurl, config, forecast, timestep}) {
 
       <Colorbar 
         position="bottomright" 
-        colorbar="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQdVtc7ruP8W6UQ28UbYUwdU9SWbz4tD6ZEeGu68mk5L6R2T4sK4z-8tp1WS8Z0oSKEw&usqp=CAU">
+        colorbar={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[0].type + '/' + 'colorbar.png'}>
       </Colorbar>
       
       <ScaleControl
