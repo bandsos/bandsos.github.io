@@ -1,5 +1,4 @@
 import logo from "./assets/icons/logo.png";
-import status from "./status.json";
 
 let config = {
     "sitename":"BandSOS",
@@ -23,10 +22,9 @@ let config = {
     },
     "cycles":["00", "06", "12", "18"],
     "fallback_forecast":{
-        date: '2022-10-22',
-        cycle: '18'
-    },
-    "status": status,
+        date: '2020-05-17',
+        cycle: '00'
+    }
 }
 
 export default config;

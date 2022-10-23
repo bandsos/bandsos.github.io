@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 
 function BasicNavbar({sitename, navbar, forecast, setForecast, cycles}) {
 
+    console.log('From navbar', forecast);
+
     const handleChange = (e) => {
         const newstate = {...forecast};
         switch (e.target.name) {
@@ -71,11 +73,16 @@ function BasicNavbar({sitename, navbar, forecast, setForecast, cycles}) {
                         />
                 </Col>
                 <Col>
-                    <Form.Select placeholder='Cycle' name="forecastcycle" defaultValue={forecast.cycle} onChange={handleChange}>
+                    <Form.Select placeholder='Cycle' name="forecastcycle" onChange={handleChange}>
                         {
                             cycles.map( (item) =>
                                {
-                                    return(<option key={item} value={item}>{item}Z</option>);
+                                    if (forecast.cycle === item) {
+                                        return(<option key={item} value={item} selected>{item}Z</option>);
+                                    } else {
+                                        return(<option key={item} value={item}>{item}Z</option>);
+                                    }
+                                    
                                }
                             )
                         }

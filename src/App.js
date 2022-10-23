@@ -40,18 +40,20 @@ export default function App() {
 
   // Forecast date and time selection in <Navbar>
   const [selectedforecast, setSelectedForecast] = useState({
-    date: config.fallback_forecast.date,
-    cycle: config.fallback_forecast.cycle,
-    dataurl: config.dataurl,
-    folder: `${config.fallback_forecast.date.replaceAll("-","")}${config.fallback_forecast.cycle}`
+    "downloaded": false,
+    "date": config.fallback_forecast.date,
+    "cycle": config.fallback_forecast.cycle,
+    "dataurl": config.dataurl,
+    "folder": `${config.fallback_forecast.date.replaceAll("-","")}${config.fallback_forecast.cycle}`
   });
   useEffect( () => {
     if (platformStatus.available) {
       setSelectedForecast({
-        date: platformStatus.data.lastforecast.date,
-        cycle: platformStatus.data.lastforecast.cycle,
-        dataurl: config.dataurl,
-        folder: `${platformStatus.data.lastforecast.date.replaceAll("-","")}${platformStatus.data.lastforecast.cycle}`
+        "downloaded": true,
+        "date": platformStatus.data.lastforecast.date,
+        "cycle": platformStatus.data.lastforecast.cycle,
+        "dataurl": config.dataurl,
+        "folder": `${platformStatus.data.lastforecast.date.replaceAll("-","")}${platformStatus.data.lastforecast.cycle}`
       });
     }
   }, [platformStatus]);
@@ -78,7 +80,7 @@ export default function App() {
       setForecast({errormessage: error.toString()});
       console.error('Error loading manifest from ', selectedforecast.url);
     });
-  }, [platformStatus, selectedforecast]);
+  }, [selectedforecast]);
 
   // Forecast layer selection from water level forecast <TimeSlider>
   const [timestep, setTimestep] = useState({
@@ -90,18 +92,30 @@ export default function App() {
 
   return (
     <div id="wrapper">
-      <div id="header">
-        <BasicNavbar
-          sitename={config.sitename}
-          navbar={config.navbar}
-          forecast={selectedforecast}
-          setForecast={setSelectedForecast}
-          cycles={config.cycles}
-        ></BasicNavbar>
-      </div>
+      {
+        platformStatus.available
+        ? <div id="header">
+          <BasicNavbar
+            sitename={config.sitename}
+            navbar={config.navbar}
+            forecast={platformStatus.data.lastforecast}
+            setForecast={setSelectedForecast}
+            cycles={config.cycles}
+          ></BasicNavbar>
+          </div>
+        : <div id="header">
+          <BasicNavbar
+            sitename={config.sitename}
+            navbar={config.navbar}
+            forecast={{'date':'', 'cycle':''}}
+            setForecast={setSelectedForecast}
+            cycles={config.cycles}
+          ></BasicNavbar>
+          </div>
+      }
       
       {
-        platformStatus.available && forecast.available
+        forecast.available
         ? <>
           <div id="content">
           <Map
