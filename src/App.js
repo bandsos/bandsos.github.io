@@ -98,7 +98,7 @@ export default function App() {
           <BasicNavbar
             sitename={config.sitename}
             navbar={config.navbar}
-            forecast={platformStatus.data.lastforecast}
+            forecast={selectedforecast}
             setForecast={setSelectedForecast}
             cycles={config.cycles}
           ></BasicNavbar>
