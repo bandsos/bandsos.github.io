@@ -84,6 +84,9 @@ export default function App() {
   const [timestep, setTimestep] = useState({
     folder: selectedforecast.folder
   });
+  useEffect( () => {
+    setTimestep({"folder":selectedforecast.folder})
+  }, [selectedforecast]);
 
   return (
     <div id="wrapper">
@@ -98,16 +101,18 @@ export default function App() {
       </div>
       
       {
-        forecast.available
-        ? <div id="content">
+        platformStatus.available && forecast.available
+        ? <>
+          <div id="content">
           <Map
             dataurl={selectedforecast.dataurl}
             config={config.map}
             forecast={forecast.payload}
             timestep={timestep}
           ></Map>
-          <TimeSlider forecast={forecast.payload} setTimestep={setTimestep}></TimeSlider>
           </div>
+          <TimeSlider forecast={forecast.payload} setTimestep={setTimestep}></TimeSlider>
+          </>
         : <Container>
           <Alert className="" variant="danger" key="danger">
             Forecast for {selectedforecast.date} cycle {selectedforecast.cycle} not available!
