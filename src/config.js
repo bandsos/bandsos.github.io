@@ -21,6 +21,11 @@ let config = {
             "icon": logo
         },
     },
+    "cycles":["00", "06", "12", "18"],
+    "fallback_forecast":{
+        date: '2022-10-22',
+        cycle: '18'
+    },
     "status": status,
 }
 

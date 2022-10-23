@@ -86,7 +86,7 @@ function Map({dataurl, config, forecast, timestep}) {
               </Tooltip>
               <DyGraph
               url={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[1].type + '/' + station.ID + '.csv'}
-              title={station.Name + ' - ' + station.Org}
+              title={station.Name + ' - ' + station.Organization}
               />
             </Popup>
           </Marker>  
