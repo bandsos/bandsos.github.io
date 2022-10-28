@@ -2,7 +2,7 @@ import logo from "./assets/icons/logo.png";
 
 let config = {
     "sitename":"BandSOS",
-    "dataurl":"https://jamalkhan.me",
+    "dataurl":"https://bandsos.github.io",
     "map":{
         "mapcenter":[22, 90], // [lat, long], Bangladesh
         "bounds":{
@@ -22,7 +22,7 @@ let config = {
     },
     "cycles":["00", "06", "12", "18"],
     "fallback_forecast":{
-        date: '2020-05-17',
+        date: '2022-10-01',
         cycle: '00'
     }
 }
