@@ -5,7 +5,6 @@ import {
   LayersControl,
   ScaleControl,
   Marker,
-  LayerGroup,
   Popup,
   Tooltip
 } from "react-leaflet";

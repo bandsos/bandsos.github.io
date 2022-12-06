@@ -9,7 +9,8 @@ const TimeSlider = function ({forecast, setTimestep}) {
     const steps = forecast.forecasts.elev.layers[0].timestamps; 
     const min = 0;
     const max = min + steps.length - 1;
-    const initindex = steps.findIndex( (step) => step.time === forecast.date );
+    const initindex = 8;
+    // TODO Fix const initindex = steps.findIndex( (step) => step.time === forecast.date );
     const starttime = steps[0].time;
     const endtime = steps[max].time;
 
