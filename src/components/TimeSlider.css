@@ -1,22 +1,30 @@
+.timeslider-outer {
+  width: 100vh;
+  align-content: center;
+  background-color: transparent;
+}
+
 .timeslider-parent {
-  height: 50px;
+  height: 60px;
   display: flex;
   flex-direction: row;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 
 #timeslider {
-  width: 100%;
-  position: relative;
+  width: 95%;
+  position:inherit;
+  visibility: visible;
+  background-color: transparent;
 }
 
-#range {
+/* #range {
   width: 100%;
-}
+} */
 
 #starttime {
-  text-align: left;
+  text-align: right;
   white-space: nowrap;
   padding-right: 10px;
 }
@@ -27,17 +35,32 @@
   padding-left: 10px;
 }
 
+@media screen and (max-width: 600px) {
+  #starttime {
+    display: none;
+  }
+
+  #endtime {
+    display: none;
+  }
+
+}
+
 #buble{
-  position: absolute;
-  left: 40%;
+  position:relative;
+  align-items: center;
   text-align: center;
 }
 
 /* From w3school */
+
 .slider {
   -webkit-appearance: none;
+  --ticksThickness: 5px;
+  --ticksHeight: 30%;
+  --ticksColor: black;
   width: 100%;
-  height: 15px;
+  height: 5px;
   border-radius: 5px;  
   background: #d3d3d3;
   outline: none;

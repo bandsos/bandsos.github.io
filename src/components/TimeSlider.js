@@ -28,25 +28,35 @@ const TimeSlider = function ({forecast, setTimestep}) {
     // });
 
     return (
-        <Container>
-            <div className="timeslider-parent">
-            <span id='starttime'>{starttime}</span>
+        <Container className="timeslider-outer">
+        <div className="timeslider-parent">
+            <div id='starttime'>
+                <div>{starttime.split(" ")[0]} </div>
+                <div>{starttime.split(" ")[1].split(":")[0]}h UTC</div>
+            </div>
             <div id="timeslider">
                 <input 
                     type="range" 
                     id='range' 
-                    className="slider" 
+                    className="slider"
+                    list="values" 
                     min={min} 
                     max={max} 
-                    value={index} 
+                    value={index}
                     onChange={ ({target: {value: step} }) => {
                         onChange(step); 
                         setTimestep({folder:steps[step].folder});
-                    }}/>
+                    }}
+                    />
+                <output></output>
+                <div class='range-slider__progress'></div>
                 <div id="buble">Currently viewing: <b>{steps[index].time}</b></div>
             </div>
-            <span id='endtime'>{endtime}</span>
+            <div id='endtime'>
+                <div>{endtime.split(" ")[0]} </div>
+                <div>{endtime.split(" ")[1].split(":")[0]}h UTC</div>
             </div>
+        </div>
         </Container>
     );
 }
