@@ -51,7 +51,7 @@ function Map({dataurl, config, forecast, timestep}) {
       maxZoom={config.maxzoom}
       style={{ width: "100vw", height: "100%"}}
     >
-      <LayersControl position="topright">
+      {/* <LayersControl position="topright">
         <LayersControl.BaseLayer checked name="OSM - Standard">
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -67,7 +67,13 @@ function Map({dataurl, config, forecast, timestep}) {
             zIndex={1}
           />
         </LayersControl.BaseLayer>
-      </LayersControl>
+      </LayersControl> */}
+
+      <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            zIndex={1}
+          />
 
       {
         forecast.forecasts.elev.layers[1].stations.map( (station) => (
