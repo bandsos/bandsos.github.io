@@ -2,18 +2,20 @@
 import { useLeafletContext } from "@react-leaflet/core";
 import L from "leaflet";
 import { useEffect } from "react";
+import "./Colorbar.css";
 
 function Colorbar(props) {
   const context = useLeafletContext();
 
   L.Control.Colorbar = L.Control.extend({
     onAdd: function (map) {
-      var img = L.DomUtil.create("img");
+      var container = L.DomUtil.create("div", "colorbar-container")
+      var img = L.DomUtil.create("img", "colorbar", container);
 
       img.src = props.colorbar;
-      img.style.width = "75px";
+      // img.style.width = "75px";
 
-      return img;
+      return container;
     },
 
     onRemove: function (map) {
