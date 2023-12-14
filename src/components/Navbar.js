@@ -39,7 +39,8 @@ function BasicNavbar({sitename, navbar, forecast, setForecast, cycles}) {
             <Navbar.Brand href="/"><b>BandSOS</b></Navbar.Brand>
             <Nav className="me-auto">
                 <NavDropdown title="Data">
-                    <NavDropdown.Item href="#">Layers</NavDropdown.Item>
+                    <NavDropdown.Item href="https://zenodo.org/doi/10.5281/zenodo.10371338">Intertidal Topography</NavDropdown.Item>
+                    <NavDropdown.Item href="https://github.com/bandsos/social-science-data">Social Science Data</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title="About">
                     <NavDropdown.Item href="https://www.spaceclimateobservatory.org/band-sos-bengal-delta">Project</NavDropdown.Item>

@@ -6,12 +6,16 @@ import {
   ScaleControl,
   Marker,
   Popup,
-  Tooltip
+  Tooltip,
+  GeoJSON
 } from "react-leaflet";
 
-import { icon, latLng, latLngBounds } from "leaflet";
+import { Layer, icon, latLng, latLngBounds } from "leaflet";
 import DyGraph from "./Graph";
 import Colorbar from './Colorbar';
+import shsData from "../assets/data/coastal_ssvi_data.json";
+import SocialDataLayer from './SocialDataLayer';
+import L from "leaflet";
 
 import marker_level from "../assets/icons/level.svg";
 const icon_level = icon({
@@ -23,6 +27,7 @@ const icon_level = icon({
 function Map({dataurl, config, forecast, timestep}) {
 
   console.log("From Map container", config, forecast, timestep);
+  console.log(shsData);
 
   // const ref = useRef(null);
   // const waterLevelsUrl = props.forecast.url + '/' + props.forecast.folder + '/' + props.forecast.branch + '/waterlevels/'
@@ -51,8 +56,9 @@ function Map({dataurl, config, forecast, timestep}) {
       maxZoom={config.maxzoom}
       style={{ width: "100vw", height: "100%"}}
     >
-      {/* <LayersControl position="topright">
-        <LayersControl.BaseLayer checked name="OSM - Standard">
+
+      <LayersControl position="topright">
+      <LayersControl.BaseLayer checked name="OSM - Standard">
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -67,7 +73,12 @@ function Map({dataurl, config, forecast, timestep}) {
             zIndex={1}
           />
         </LayersControl.BaseLayer>
-      </LayersControl> */}
+        <LayersControl.Overlay name="Social Indicators">
+          <SocialDataLayer data={shsData}></SocialDataLayer>
+        </LayersControl.Overlay>
+      </LayersControl>
+
+      
 
       <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
