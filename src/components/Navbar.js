@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 
 function BasicNavbar({sitename, navbar, forecast, setForecast, cycles}) {
 
-    console.log('From navbar', forecast);
+    // console.log('From navbar', forecast);
 
     const handleChange = (e) => {
         const newstate = {...forecast};
@@ -36,29 +36,25 @@ function BasicNavbar({sitename, navbar, forecast, setForecast, cycles}) {
                     <img alt={sitename} src={navbar.branding.icon} height="35px"/>
             </Navbar.Brand>
             <Navbar.Collapse id="basic-navbar-nav">
-            <Navbar.Brand href="/"><b>BandSOS Platform</b></Navbar.Brand>
+            <Navbar.Brand href="/"><b>BandSOS</b></Navbar.Brand>
             <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <NavDropdown title="Platform">
-                    <NavDropdown.Item href="https://github.com/bandsos">Codes and Data</NavDropdown.Item>
-                    <NavDropdown.Item href="https://github.com/schism-dev/schism">Model</NavDropdown.Item>
-                    <NavDropdown.Item href="#status">System Status</NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown title="Risk and Vulnerability">
+                <NavDropdown title="Data">
                     <NavDropdown.Item href="#">Layers</NavDropdown.Item>
                 </NavDropdown>
-                <NavDropdown title="Important Links">
+                <NavDropdown title="About">
+                    <NavDropdown.Item href="https://www.spaceclimateobservatory.org/band-sos-bengal-delta">Project</NavDropdown.Item>
+                    <NavDropdown.Item href="https://github.com/bandsos/">Website</NavDropdown.Item>
+                    <NavDropdown.Item href="https://github.com/schism-dev/schism">Model</NavDropdown.Item>
+                    <NavDropdown.Item href="https://github.com/bandsos/status">System Status</NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown title="Partners">
                     <NavDropdown.Item href="https://www.bwdb.gov.bd">BWDB</NavDropdown.Item>
+                    <NavDropdown.Item href="https://ffwc.gov.bd">FFWC</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item href="https://www.ird.fr">IRD</NavDropdown.Item>
                     <NavDropdown.Item href="https://lienss.univ-lr.fr">LIENSs</NavDropdown.Item>
                     <NavDropdown.Item href="https://www.legos.omp.eu/">LEGOS</NavDropdown.Item>
                 </NavDropdown>
-                <NavDropdown title="About Us">
-                    <NavDropdown.Item href="https://www.spaceclimateobservatory.org/band-sos-bengal-delta">Project Detail</NavDropdown.Item>
-                    <NavDropdown.Item href="#people">People</NavDropdown.Item>
-                </NavDropdown>
-                <Nav.Link href="#contact">Contact</Nav.Link>
             </Nav>
             </Navbar.Collapse>
             <Row>
