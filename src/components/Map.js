@@ -3,6 +3,7 @@ import {
   MapContainer,
   TileLayer,
   LayersControl,
+  LayerGroup,
   ScaleControl,
   Marker,
   Popup,
