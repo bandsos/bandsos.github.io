@@ -75,28 +75,30 @@ function Map({dataurl, config, forecast, timestep}) {
         </LayersControl.BaseLayer>
 
         <LayersControl.Overlay checked name="Forecast Stations">
-          {
-          forecast.forecasts.elev.layers[1].stations.map( (station) => (
-            <Marker
-              key={station.ID}
-              position={[station.Lat, station.Lon]}
-              icon={icon_level}
-            >
-              <Popup maxWidth={"80%"}>
-                <Tooltip>
-                  Station ID: {station.ID} <br />
-                  Station Name: {station.Name} <br />
-                  Longitude: {station.Lon} <br />
-                  Latitude: {station.Lat} <br />
-                </Tooltip>
-                <DyGraph
-                url={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[1].type + '/' + station.ID + '.csv'}
-                title={station.Name + ' - ' + station.Organization}
-                />
-              </Popup>
-            </Marker>  
-          ))
-        }
+        <LayerGroup>
+            {
+            forecast.forecasts.elev.layers[1].stations.map( (station) => (
+              <Marker
+                key={station.ID}
+                position={[station.Lat, station.Lon]}
+                icon={icon_level}
+              >
+                <Popup maxWidth={"80%"}>
+                  <Tooltip>
+                    Station ID: {station.ID} <br />
+                    Station Name: {station.Name} <br />
+                    Longitude: {station.Lon} <br />
+                    Latitude: {station.Lat} <br />
+                  </Tooltip>
+                  <DyGraph
+                  url={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[1].type + '/' + station.ID + '.csv'}
+                  title={station.Name + ' - ' + station.Organization}
+                  />
+                </Popup>
+              </Marker>  
+            ))
+          }
+        </LayerGroup>
         </LayersControl.Overlay>
 
         <LayersControl.Overlay name="Social Indicators">
