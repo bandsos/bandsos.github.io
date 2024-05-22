@@ -73,41 +73,37 @@ function Map({dataurl, config, forecast, timestep}) {
             zIndex={1}
           />
         </LayersControl.BaseLayer>
+
+        <LayersControl.Overlay checked name="Forecast Stations">
+          {
+          forecast.forecasts.elev.layers[1].stations.map( (station) => (
+            <Marker
+              key={station.ID}
+              position={[station.Lat, station.Lon]}
+              icon={icon_level}
+            >
+              <Popup maxWidth={"80%"}>
+                <Tooltip>
+                  Station ID: {station.ID} <br />
+                  Station Name: {station.Name} <br />
+                  Longitude: {station.Lon} <br />
+                  Latitude: {station.Lat} <br />
+                </Tooltip>
+                <DyGraph
+                url={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[1].type + '/' + station.ID + '.csv'}
+                title={station.Name + ' - ' + station.Organization}
+                />
+              </Popup>
+            </Marker>  
+          ))
+        }
+        </LayersControl.Overlay>
+
         <LayersControl.Overlay name="Social Indicators">
           <SocialDataLayer data={shsData}></SocialDataLayer>
         </LayersControl.Overlay>
+
       </LayersControl>
-
-      
-
-      <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            zIndex={1}
-          />
-
-      {
-        forecast.forecasts.elev.layers[1].stations.map( (station) => (
-          <Marker
-            key={station.ID}
-            position={[station.Lat, station.Lon]}
-            icon={icon_level}
-          >
-            <Popup maxWidth={"80%"}>
-              <Tooltip>
-                Station ID: {station.ID} <br />
-                Station Name: {station.Name} <br />
-                Longitude: {station.Lon} <br />
-                Latitude: {station.Lat} <br />
-              </Tooltip>
-              <DyGraph
-              url={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[1].type + '/' + station.ID + '.csv'}
-              title={station.Name + ' - ' + station.Organization}
-              />
-            </Popup>
-          </Marker>  
-        ))
-      }
       
       <TileLayer
         url={tileurl}
