@@ -50,7 +50,7 @@ export default function App() {
   // Checking if cycle is passed
   const queryParameters = new URLSearchParams(window.location.search);
   const urlCycle = queryParameters.get("cycle")
-  if (urlCycle == null) {
+  if (urlCycle != null) {
     setSelectedForecast({
       "downloaded": true,
       "date": urlCycle.substring(0, 8),
