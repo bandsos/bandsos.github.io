@@ -56,6 +56,13 @@ function BasicNavbar({sitename, navbar, forecast, setForecast, cycles}) {
                     <NavDropdown.Item href="https://lienss.univ-lr.fr">LIENSs</NavDropdown.Item>
                     <NavDropdown.Item href="https://www.legos.omp.eu/">LEGOS</NavDropdown.Item>
                 </NavDropdown>
+                <NavDropdown title="Past Named Cyclones">
+                    <NavDropdown.Item href="https://bandsos.github.io/?cycle=2022102400">2022 - Cyclone Sitrang - Oct 22 to Oct 25</NavDropdown.Item>
+                    <NavDropdown.Item href="https://bandsos.github.io/?cycle=2023051300">2023 - Cyclone Mocha - May 9 to May 15</NavDropdown.Item>
+                    <NavDropdown.Item href="https://bandsos.github.io/?cycle=2023102400">2023 - Cyclone Hamoon - Oct 21 to Oct 25</NavDropdown.Item>
+                    <NavDropdown.Item href="https://bandsos.github.io/?cycle=2023111700">2023 - Cyclone Midhili - Nov 14 to Nov 18</NavDropdown.Item>
+                    <NavDropdown.Item href="https://bandsos.github.io/?cycle=2024052600">2024 - Cyclone Remal - May 24 to May 28</NavDropdown.Item>
+                </NavDropdown>
             </Nav>
             </Navbar.Collapse>
             <Row>
