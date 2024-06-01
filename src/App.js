@@ -50,6 +50,7 @@ export default function App() {
   // Checking if cycle is passed
   const queryParameters = new URLSearchParams(window.location.search);
   const urlCycle = queryParameters.get("cycle")
+  
   if (urlCycle != null) {
     setSelectedForecast({
       "downloaded": true,
@@ -58,19 +59,19 @@ export default function App() {
       "dataurl": config.dataurl,
       "folder": urlCycle
     })
+  } else {
+    useEffect( () => {
+      if (platformStatus.available) {
+        setSelectedForecast({
+          "downloaded": true,
+          "date": platformStatus.data.lastforecast.date,
+          "cycle": platformStatus.data.lastforecast.cycle,
+          "dataurl": config.dataurl,
+          "folder": `${platformStatus.data.lastforecast.date.replaceAll("-","")}${platformStatus.data.lastforecast.cycle}`
+        });
+      }
+    }, [platformStatus]);
   }
-
-  useEffect( () => {
-    if (platformStatus.available) {
-      setSelectedForecast({
-        "downloaded": true,
-        "date": platformStatus.data.lastforecast.date,
-        "cycle": platformStatus.data.lastforecast.cycle,
-        "dataurl": config.dataurl,
-        "folder": `${platformStatus.data.lastforecast.date.replaceAll("-","")}${platformStatus.data.lastforecast.cycle}`
-      });
-    }
-  }, [platformStatus]);
 
   console.log('Selected forecast', selectedforecast);
 
