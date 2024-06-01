@@ -46,6 +46,20 @@ export default function App() {
     "dataurl": config.dataurl,
     "folder": `${config.fallback_forecast.date.replaceAll("-","")}${config.fallback_forecast.cycle}`
   });
+
+  // Checking if cycle is passed
+  const queryParameters = new URLSearchParams(window.location.search);
+  const urlCycle = queryParameters.get("cycle")
+  if (urlCycle == null) {
+    setSelectedForecast({
+      "downloaded": true,
+      "date": urlCycle.substring(0, 8),
+      "cycle": urlCycle.substring(8, 10),
+      "dataurl": config.dataurl,
+      "folder": urlCycle
+    })
+  }
+
   useEffect( () => {
     if (platformStatus.available) {
       setSelectedForecast({
