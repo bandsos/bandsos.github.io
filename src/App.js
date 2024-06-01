@@ -49,29 +49,28 @@ export default function App() {
 
   // Checking if cycle is passed
   const queryParameters = new URLSearchParams(window.location.search);
-  const urlCycle = queryParameters.get("cycle")
-  
-  if (urlCycle != null) {
-    setSelectedForecast({
-      "downloaded": true,
-      "date": urlCycle.substring(0, 8),
-      "cycle": urlCycle.substring(8, 10),
-      "dataurl": config.dataurl,
-      "folder": urlCycle
-    })
-  } else {
-    useEffect( () => {
-      if (platformStatus.available) {
-        setSelectedForecast({
-          "downloaded": true,
-          "date": platformStatus.data.lastforecast.date,
-          "cycle": platformStatus.data.lastforecast.cycle,
-          "dataurl": config.dataurl,
-          "folder": `${platformStatus.data.lastforecast.date.replaceAll("-","")}${platformStatus.data.lastforecast.cycle}`
-        });
-      }
-    }, [platformStatus]);
-  }
+  const urlCycle = queryParameters.get("cycle");
+
+  useEffect( () => {
+    if (urlCycle != null) {
+      setSelectedForecast({
+        "downloaded": true,
+        "date": `${urlCycle.substring(0, 4)}-${urlCycle.substring(4, 6)}-${urlCycle.substring(6, 8)}`,
+        "cycle": urlCycle.substring(8, 10),
+        "dataurl": config.dataurl,
+        "folder": urlCycle
+      })
+    }
+    else if (platformStatus.available) {
+      setSelectedForecast({
+        "downloaded": true,
+        "date": platformStatus.data.lastforecast.date,
+        "cycle": platformStatus.data.lastforecast.cycle,
+        "dataurl": config.dataurl,
+        "folder": `${platformStatus.data.lastforecast.date.replaceAll("-","")}${platformStatus.data.lastforecast.cycle}`
+      });
+    }
+  }, [platformStatus]);
 
   console.log('Selected forecast', selectedforecast);
 
