@@ -4,12 +4,16 @@ import Map from "./components/Map";
 import BasicNavbar from "./components/Navbar";
 import TimeSlider from "./components/TimeSlider";
 
+import NewNavbar from "./molecules/rkNavbar";
+import NewTimeSlider from "./molecules/rkTimeSlider";
+
 import config from "./config";
 
 // Stylesheets
 import "leaflet/dist/leaflet.css";
 import "./App.css";
 import { Alert, Container } from "react-bootstrap";
+
 
 // The main application
 export default function App() {
@@ -115,7 +119,9 @@ export default function App() {
             forecast={selectedforecast}
             setForecast={setSelectedForecast}
             cycles={config.cycles}
-          ></BasicNavbar>
+          >
+          </BasicNavbar>
+          {/* <NewNavbar></NewNavbar> */}
           </div>
         : <div id="header">
           <BasicNavbar
@@ -139,7 +145,8 @@ export default function App() {
             timestep={timestep}
           ></Map>
           </div>
-          <TimeSlider forecast={forecast.payload} setTimestep={setTimestep}></TimeSlider>
+          {/* <TimeSlider forecast={forecast.payload} setTimestep={setTimestep}></TimeSlider> */}
+          <NewTimeSlider></NewTimeSlider>
           </>
         : <Container>
           <Alert className="" variant="danger" key="danger">
@@ -150,3 +157,6 @@ export default function App() {
     </div>
   );
 }
+
+// const styles = StyleSheet.create({
+// });
