@@ -14,6 +14,7 @@ import "leaflet/dist/leaflet.css";
 import "./App.css";
 import { Alert, Container } from "react-bootstrap";
 
+//run command: npm start
 
 // The main application
 export default function App() {

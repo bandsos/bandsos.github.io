@@ -9,6 +9,7 @@
     -moz-flex-direction: column;
     -webkit-flex-direction: column;
     flex-direction: column;
+    background-color: green;
 }
 
 #content {
