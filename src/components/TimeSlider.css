@@ -1,13 +1,14 @@
 .timeslider-outer {
   width: 100vh;
   align-content: center;
-  background-color: transparent;
 }
 
 .timeslider-parent {
   height: 60px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding-top: 5px;
   padding-bottom: 10px;
 }
@@ -85,4 +86,18 @@
   border-radius: 50%;
   background: #04AA6D;
   cursor: pointer;
+}
+
+
+.buttonContainer{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+.sliderButton {
+  border-radius: 100;
+  margin-left: 4px;
+  margin-right: 4px;
+  font-size: 22px;
 }

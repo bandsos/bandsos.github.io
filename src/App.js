@@ -16,6 +16,13 @@ import { Alert, Container } from "react-bootstrap";
 
 //run command: npm start
 
+/*
+  Rounaq WTF comments:
+  - Layer Control is pretty tricky. But they don't go to the highest possible numerical z-index: 2147483647
+  - what is <output> tag in TimeSlider.js? 
+  
+*/
+
 // The main application
 export default function App() {
   console.log('Site config', config);
@@ -139,15 +146,19 @@ export default function App() {
         forecast.available
         ? <>
           <div id="content">
+          
           <Map
             dataurl={selectedforecast.dataurl}
             config={config.map}
             forecast={forecast.payload}
             timestep={timestep}
-          ></Map>
+            setTimestep={setTimestep}
+          >
+          </Map>
           </div>
-          {/* <TimeSlider forecast={forecast.payload} setTimestep={setTimestep}></TimeSlider> */}
-          <NewTimeSlider></NewTimeSlider>
+          <div id="onTop">
+              <TimeSlider forecast={forecast.payload} setTimestep={setTimestep}></TimeSlider>
+          </div>
           </>
         : <Container>
           <Alert className="" variant="danger" key="danger">
