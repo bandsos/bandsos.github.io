@@ -59,15 +59,31 @@ const TimeSlider = function ({forecast, setTimestep}) {
                 </div>
                 
                 <div class="buttonContainer">
-                    <div class="sliderButton">
-                        <button  onClick={() => handleStepChange('left')}>&lt;</button>
+                    <div>
+                        <button class="sliderButton" onClick={() => handleStepChange('left')}>&lt;</button>
                     </div>
                         
                     <div>
                         <button class="sliderButton" onClick={() => handleStepChange('right')}>&gt;</button>
                     </div>
-                
                 </div>
+
+                <div class="mobileDisplay">
+
+                    <div class = "mobileButtons">
+                        <div>
+                            <button class="sliderButton" onClick={() => handleStepChange('left')}>&lt;</button>
+                        </div>
+                            
+                        <div>
+                            <button class="sliderButton" onClick={() => handleStepChange('right')}>&gt;</button>
+                        </div>
+                    </div>
+
+                    <div id="buble"><b>{steps[index].time}</b></div>
+                </div>
+
+
             </div>
         </Container>
     );

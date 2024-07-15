@@ -88,7 +88,7 @@
   cursor: pointer;
 }
 
-
+/* RK additions start here  */
 .buttonContainer{
   display: flex;
   flex-direction: row;
@@ -100,4 +100,44 @@
   margin-left: 4px;
   margin-right: 4px;
   font-size: 22px;
+}
+
+.mobileDisplay{
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .buttonContainer {
+    display: none;
+  }
+  #timeslider {
+    display: none;
+  }
+
+  .mobileDisplay {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18%;
+  }
+
+  .sliderButton {
+    font-size: 22px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #buble {
+    font-size: 14px;
+  }
+
+  .mobileButtons {
+    display: flex;
+    flex-direction: row;
+  }
+  
 }
