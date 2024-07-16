@@ -115,6 +115,11 @@
   display: none;
 }
 
+.spacer {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 @media screen and (max-width: 600px) {
   .buttonContainer {
     display: none;
@@ -148,5 +153,6 @@
     display: flex;
     flex-direction: row;
   }
+  
   
 }
