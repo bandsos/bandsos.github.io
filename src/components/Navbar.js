@@ -31,7 +31,6 @@ function BasicNavbar({sitename, navbar, forecast, setForecast, cycles}) {
     return (
         <Navbar bg="light" expand="lg">
         <Container>
-            <p> navigation bar component </p>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Brand href="/">
                     <img alt={sitename} src={navbar.branding.icon} height="35px"/>
