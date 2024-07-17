@@ -1,15 +1,16 @@
 .timeslider-outer {
   width: 100vh;
   align-content: center;
-  background-color: transparent;
 }
 
 .timeslider-parent {
   height: 60px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
   padding-top: 5px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 #timeslider {
@@ -57,12 +58,11 @@
 .slider {
   -webkit-appearance: none;
   --ticksThickness: 5px;
-  --ticksHeight: 30%;
+  --ticksHeight: 12px;
   --ticksColor: black;
   width: 100%;
-  height: 5px;
-  border-radius: 5px;  
-  background: #d3d3d3;
+  height: 8px;
+  border-radius: 5px;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -75,7 +75,17 @@
   width: 25px;
   height: 25px;
   border-radius: 50%; 
-  background: #04AA6D;
+  background: #002a58;
+  border-color: #002a58;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #002a58;
+  border-color: #002a58;
   cursor: pointer;
 }
 
@@ -85,4 +95,64 @@
   border-radius: 50%;
   background: #04AA6D;
   cursor: pointer;
+}
+
+/* RK additions start here  */
+.buttonContainer{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+.sliderButton {
+  border-radius: 100;
+  margin-left: 4px;
+  margin-right: 4px;
+  font-size: 22px;
+}
+
+.mobileDisplay{
+  display: none;
+}
+
+.spacer {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .buttonContainer {
+    display: none;
+  }
+  #timeslider {
+    display: none;
+  }
+
+  .mobileDisplay {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18%;
+  }
+
+  .sliderButton {
+    font-size: 22px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  #buble {
+    font-size: 14px;
+  }
+
+  .mobileButtons {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  
 }
