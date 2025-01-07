@@ -129,13 +129,13 @@ function ModalInformation(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Under maintenance!
+          Maintenance notice!
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <p>
           The computational backend of BandSOS is currently under maintenance. The last generated forecast is displayed.
-          The system will come back online as soon as possible!
+          The system will come back online as soon as possible! We are sorry for this inconvenience.
         </p>
       </Modal.Body>
       <Modal.Footer>
