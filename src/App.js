@@ -13,6 +13,8 @@ import config from "./config";
 import "leaflet/dist/leaflet.css";
 import "./App.css";
 import { Alert, Container } from "react-bootstrap";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
 //run command: npm start
 
@@ -116,7 +118,37 @@ export default function App() {
     setTimestep({"folder":selectedforecast.folder})
   }, [selectedforecast]);
 
+  // Hotfix warning container
+function ModalInformation(props) {
   return (
+    <Modal
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Under maintenance!
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>
+          The computational backend of BandSOS is currently under maintenance. The last generated forecast is displayed.
+          The system will come back online as soon as possible!
+        </p>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+const [modalShow, setModalShow] = React.useState(true);
+
+  return (
+    <>
     <div id="wrapper">
       {
         platformStatus.available
@@ -167,6 +199,13 @@ export default function App() {
           </Container>
       }
     </div>
+
+    {/* Hotfix warning */}
+    <ModalInformation
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+    </>
   );
 }
 
