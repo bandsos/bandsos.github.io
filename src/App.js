@@ -117,10 +117,6 @@ export default function App() {
     setTimestep({"folder":selectedforecast.folder})
   }, [selectedforecast]);
 
-
-
-const [modalShow, setModalShow] = React.useState(false);
-
   return (
     <>
     <div id="wrapper">
@@ -174,11 +170,11 @@ const [modalShow, setModalShow] = React.useState(false);
       }
     </div>
 
-    {/* Hotfix warning */}
-    <Maintenance
+    {/* Hotfix warning; Uncomment the following */}
+    {/* <Maintenance
         show={modalShow}
         onHide={() => setModalShow(false)}
-      />
+      /> */}
     </>
   );
 }
