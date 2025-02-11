@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Map from "./components/Map";
 import BasicNavbar from "./components/Navbar";
 import TimeSlider from "./components/TimeSlider";
+import Maintenance from "./components/Maintenance";
 
 import NewNavbar from "./molecules/rkNavbar";
 import NewTimeSlider from "./molecules/rkTimeSlider";
@@ -13,8 +14,6 @@ import config from "./config";
 import "leaflet/dist/leaflet.css";
 import "./App.css";
 import { Alert, Container } from "react-bootstrap";
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 
 //run command: npm start
 
@@ -118,34 +117,9 @@ export default function App() {
     setTimestep({"folder":selectedforecast.folder})
   }, [selectedforecast]);
 
-  // Hotfix warning container
-function ModalInformation(props) {
-  return (
-    <Modal
-      {...props}
-      size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-    >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Maintenance notice!
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p>
-          The computational backend of BandSOS is currently under maintenance. The last generated forecast is displayed.
-          The system will come back online as soon as possible! We are sorry for this inconvenience.
-        </p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
 
-const [modalShow, setModalShow] = React.useState(true);
+
+const [modalShow, setModalShow] = React.useState(false);
 
   return (
     <>
@@ -201,7 +175,7 @@ const [modalShow, setModalShow] = React.useState(true);
     </div>
 
     {/* Hotfix warning */}
-    <ModalInformation
+    <Maintenance
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
