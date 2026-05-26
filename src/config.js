@@ -2,7 +2,7 @@ import logo from "./assets/icons/logo.png";
 
 let config = {
     "sitename":"BandSOS",
-    "dataurl":"https://bandsos.github.io",
+    "dataurl":"https://coastal.ffwc.info.bd",
     "map":{
         "mapcenter":[22, 90], // [lat, long], Bangladesh
         "bounds":{
