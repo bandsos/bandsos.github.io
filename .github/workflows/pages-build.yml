@@ -6,22 +6,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
+    permissions:
+      contents: write
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Nodejs ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install packages
-      run: npm install
+        node-version: 16.x
+    - run: npm ci
+    - run: npm run build
     - name: Deploy to GH pages
       run: |
         git config --global user.email "github-actions@users.noreploy.github.com"
         git config --global user.name "github-actions"
         git remote set-url origin https://git:${{ secrets.DEPLOY_TOKEN }}@github.com/${{ github.repository }}.git
         CI=false npm run deploy
-    - name: Updating website
-      run: echo "Update website"
