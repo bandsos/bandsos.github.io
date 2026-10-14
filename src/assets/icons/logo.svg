@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.72337262"
+     inkscape:cx="397.44385"
+     inkscape:cy="561.95105"
+     inkscape:window-width="3200"
+     inkscape:window-height="1771"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       width="58.441219"
+       height="52.341774"
+       preserveAspectRatio="none"
+       xlink:href="Logo_SCO.png"
+       id="image832"
+       x="58.986893"
+       y="50.666977"
+       inkscape:export-filename="C:\Users\Khan\Documents\bandsos.github.io\src\assets\icons\logo.png"
+       inkscape:export-xdpi="38.909885"
+       inkscape:export-ydpi="38.909885" />
+    <image
+       width="79.297562"
+       height="49.560974"
+       preserveAspectRatio="none"
+       xlink:href="Logo_BandSOS.png"
+       id="image844"
+       x="117.42811"
+       y="52.254478"
+       inkscape:export-filename="C:\Users\Khan\Documents\bandsos.github.io\src\assets\icons\logo.png"
+       inkscape:export-xdpi="38.909885"
+       inkscape:export-ydpi="38.909885" />
+  </g>
+</svg>
