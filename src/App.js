@@ -32,7 +32,7 @@ export default function App() {
   const [platformStatus, setPlatformStatus] = useState({"available":false, "data":{}});
   useEffect( () => {
     // const platformStatusUrl = config.dataurl + '/status/status.json'; // FIXME
-    const platformStatusUrl = 'https://raw.githubusercontent.com/bandsos/status/refs/heads/main/status.json' // HOTFIX
+    const platformStatusUrl = 'https://raw.githubusercontent.com/bandsos/status/refs/heads/main/status.json'; // HOTFIX
     fetch(platformStatusUrl)
     .then( async response => {
       const data = await response.json();
