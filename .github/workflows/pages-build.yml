@@ -14,7 +14,6 @@ jobs:
       with:
         node-version: 18.x
     - run: npm install
-    - run: npm run build
     - name: Deploy to GH pages
       run: |
         git config --global user.email "github-actions@users.noreploy.github.com"
