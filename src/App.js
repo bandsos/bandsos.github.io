@@ -114,9 +114,13 @@ export default function App() {
   const [timestep, setTimestep] = useState({
     folder: selectedforecast.folder
   });
+  const [mapStatus, setMapStatus] = useState({ folder: null, errorCount: 0 });
   useEffect( () => {
     setTimestep({"folder":selectedforecast.folder})
   }, [selectedforecast]);
+  const mapRequestBase = forecast.available
+    ? `${selectedforecast.dataurl}/${forecast.payload.cycle}/${forecast.payload.forecasts.elev.src}/${forecast.payload.forecasts.elev.layers[0].type}/`
+    : "";
 
   return (
     <>
@@ -144,12 +148,19 @@ export default function App() {
             config={config.map}
             forecast={forecast.payload}
             timestep={timestep}
-            setTimestep={setTimestep}
+            mapRequestBase={mapRequestBase}
+            onTileLayerSettled={(requestKey, errorCount) => setMapStatus({ requestKey, errorCount })}
           >
           </Map>
           </div>
           <div id="onTop">
-              <TimeSlider forecast={forecast.payload} setTimestep={setTimestep}></TimeSlider>
+              <TimeSlider
+                forecast={forecast.payload}
+                setTimestep={setTimestep}
+                mapRequestBase={mapRequestBase}
+                cycleStartTime={`${selectedforecast.date} ${selectedforecast.cycle}:00:00`}
+                mapStatus={mapStatus}
+              ></TimeSlider>
           </div>
           </>
         : <Container>

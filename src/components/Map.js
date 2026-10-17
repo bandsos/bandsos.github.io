@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   MapContainer,
   TileLayer,
@@ -23,7 +23,7 @@ const icon_level = icon({
 });
 
 // Main component
-function Map({dataurl, config, forecast, timestep}) {
+function Map({dataurl, config, forecast, timestep, mapRequestBase, onTileLayerSettled}) {
   const [selectedStation, setSelectedStation] = useState(null);
   const timeseriesFilename = selectedStation
     ? `bandsos-${forecast.cycle}-${selectedStation.ID}-${selectedStation.Name}`
@@ -37,20 +37,33 @@ function Map({dataurl, config, forecast, timestep}) {
   // const waterLevelsUrl = props.forecast.url + '/' + props.forecast.folder + '/forecasts/elev/tiles'
   // const stationUrl = props.forecast.url + '/' + props.forecast.folder + '/forecasts/elev/stations'
   // const layerUrl = waterLevelsUrl + props.layer.folder + "/{z}/{x}/{y}.png";
-  const tileurl = dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[0].type + '/' + timestep.folder + "/{z}/{x}/{y}.png";
+  const requestKey = `${mapRequestBase}${timestep.folder}`;
+  const tileurl = `${requestKey}/{z}/{x}/{y}.png`;
 
   console.log(tileurl);
 
-  const ref = useRef(null);
+  const requestedKeyRef = useRef(requestKey);
+  requestedKeyRef.current = requestKey;
+  const tileErrorsRef = useRef({ requestKey, count: 0 });
+  if (tileErrorsRef.current.requestKey !== requestKey) {
+    tileErrorsRef.current = { requestKey, count: 0 };
+  }
   const stationTimeseriesUrl = selectedStation
     ? `${dataurl}/${forecast.cycle}/${forecast.forecasts.elev.src}/${forecast.forecasts.elev.layers[1].type}/${selectedStation.ID}.csv`
     : null;
 
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.setUrl(tileurl);
+  const tileEventHandlers = {
+    tileerror: () => {
+      if (requestedKeyRef.current === requestKey) {
+        tileErrorsRef.current.count += 1;
+      }
+    },
+    load: () => {
+      if (requestedKeyRef.current === requestKey) {
+        onTileLayerSettled(requestKey, tileErrorsRef.current.count);
+      }
     }
-  }, [tileurl]);
+  };
 
   return (
     <>
@@ -107,11 +120,12 @@ function Map({dataurl, config, forecast, timestep}) {
       </LayersControl>
       
       <TileLayer
+        key={requestKey}
         url={tileurl}
         tms={true}
         opacity={1}
         zIndex={10}
-        ref={ref}
+        eventHandlers={tileEventHandlers}
       ></TileLayer>
 
       <Colorbar 
