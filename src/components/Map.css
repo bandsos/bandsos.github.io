@@ -1,0 +1,9 @@
+.leaflet-popup.timeseries-popup .leaflet-popup-content {
+  width: min(480px, calc(100vw - 64px)) !important;
+}
+
+.timeseries-chart {
+  width: 100%;
+  height: min(320px, max(140px, calc(100vh - 100px)));
+  height: min(320px, max(140px, calc(100dvh - 100px)));
+}

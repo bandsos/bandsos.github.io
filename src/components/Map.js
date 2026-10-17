@@ -17,6 +17,7 @@ import Colorbar from './Colorbar';
 import shsData from "../assets/data/coastal_ssvi_data.json";
 import SocialDataLayer from './SocialDataLayer';
 import L from "leaflet";
+import "./Map.css";
 
 import marker_level from "../assets/icons/level.svg";
 const icon_level = icon({
@@ -40,6 +41,7 @@ function Map({dataurl, config, forecast, timestep}) {
   console.log(tileurl);
 
   const ref = useRef(null);
+
   useEffect(() => {
     if (ref.current) {
       ref.current.setUrl(tileurl);
@@ -84,7 +86,10 @@ function Map({dataurl, config, forecast, timestep}) {
                 position={[station.Lat, station.Lon]}
                 icon={icon_level}
               >
-                <Popup maxWidth={"80%"}>
+                <Popup
+                  className="timeseries-popup"
+                  maxWidth={520}
+                >
                   <Tooltip>
                     Station ID: {station.ID} <br />
                     Station Name: {station.Name} <br />

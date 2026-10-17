@@ -9,24 +9,27 @@ import "dygraphs/dist/dygraph.min.css";
 //   }
 
 function DyGraph(props) {
-  const graphRef = useRef();
+  const graphRef = useRef(null);
   console.log(props);
 
   useEffect(() => {
-    new Dygraph(
-      graphRef.current,
-      props.url,
-      {
-        title: props.title,
-        ylabel: "Water level (m)",
-        xlabel: "Datetime",
-        gridLineWidth: "0.1",
-        // valueRange: [0, null],
-      }
-    );
-  });
+    const graph = new Dygraph(graphRef.current, props.url, {
+      title: props.title,
+      ylabel: "Water level (m)",
+      xlabel: "Datetime",
+      gridLineWidth: "0.1",
+      // valueRange: [0, null],
+    });
+    const resizeObserver = new ResizeObserver(() => graph.resize());
+    resizeObserver.observe(graphRef.current);
 
-  return <div ref={graphRef}></div>;
+    return () => {
+      resizeObserver.disconnect();
+      graph.destroy();
+    };
+  }, [props.title, props.url]);
+
+  return <div ref={graphRef} className="timeseries-chart"></div>;
 }
 
 export default DyGraph;
