@@ -1,11 +1,40 @@
+:root {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-brand-indigo: #302783;
+  --color-brand-cyan: #00a3d9;
+  --color-link: #007c9f;
+  --color-ink: #263238;
+  --color-muted: #5c6b73;
+  --color-border: #d7e0e8;
+  --color-surface: #fff;
+  --color-canvas: #f5f8fb;
+  --color-focus: rgba(0, 124, 159, 0.35);
+}
+
 body {
+  --bs-body-font-family: var(--font-sans);
+  --bs-body-color: var(--color-ink);
+  --bs-body-bg: var(--color-canvas);
+  --bs-link-color: var(--color-link);
+  --bs-link-hover-color: var(--color-brand-indigo);
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-canvas);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+input {
+  accent-color: var(--color-brand-indigo);
 }
 
 code {
