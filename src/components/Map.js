@@ -1,23 +1,20 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   MapContainer,
   TileLayer,
   LayersControl,
   LayerGroup,
   ScaleControl,
-  Marker,
-  Popup,
-  Tooltip,
-  GeoJSON
+  Marker
 } from "react-leaflet";
 
-import { Layer, icon, latLng, latLngBounds } from "leaflet";
+import { icon, latLng, latLngBounds } from "leaflet";
 import DyGraph from "./Graph";
 import Colorbar from './Colorbar';
 import shsData from "../assets/data/coastal_ssvi_data.json";
 import SocialDataLayer from './SocialDataLayer';
-import L from "leaflet";
 import "./Map.css";
+import { Modal } from "react-bootstrap";
 
 import marker_level from "../assets/icons/level.svg";
 const icon_level = icon({
@@ -27,6 +24,10 @@ const icon_level = icon({
 
 // Main component
 function Map({dataurl, config, forecast, timestep}) {
+  const [selectedStation, setSelectedStation] = useState(null);
+  const timeseriesFilename = selectedStation
+    ? `bandsos-${forecast.cycle}-${selectedStation.ID}-${selectedStation.Name}`
+    : "";
 
   console.log("From Map container", config, forecast, timestep);
   console.log(shsData);
@@ -41,6 +42,9 @@ function Map({dataurl, config, forecast, timestep}) {
   console.log(tileurl);
 
   const ref = useRef(null);
+  const stationTimeseriesUrl = selectedStation
+    ? `${dataurl}/${forecast.cycle}/${forecast.forecasts.elev.src}/${forecast.forecasts.elev.layers[1].type}/${selectedStation.ID}.csv`
+    : null;
 
   useEffect(() => {
     if (ref.current) {
@@ -49,6 +53,7 @@ function Map({dataurl, config, forecast, timestep}) {
   }, [tileurl]);
 
   return (
+    <>
     <MapContainer
       // key={props.forecast.date + props.forecast.cycle}
       center={config.center}
@@ -85,22 +90,10 @@ function Map({dataurl, config, forecast, timestep}) {
                 key={station.ID}
                 position={[station.Lat, station.Lon]}
                 icon={icon_level}
+                eventHandlers={{
+                  click: () => setSelectedStation(station)
+                }}
               >
-                <Popup
-                  className="timeseries-popup"
-                  maxWidth={520}
-                >
-                  <Tooltip>
-                    Station ID: {station.ID} <br />
-                    Station Name: {station.Name} <br />
-                    Longitude: {station.Lon} <br />
-                    Latitude: {station.Lat} <br />
-                  </Tooltip>
-                  <DyGraph
-                  url={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[1].type + '/' + station.ID + '.csv'}
-                  title={station.Name + ' - ' + station.Organization}
-                  />
-                </Popup>
               </Marker>  
             ))
           }
@@ -133,6 +126,32 @@ function Map({dataurl, config, forecast, timestep}) {
         maxWidth={200}
       ></ScaleControl>
     </MapContainer>
+    <Modal
+      show={selectedStation !== null}
+      onHide={() => setSelectedStation(null)}
+      centered
+      scrollable
+      dialogClassName="timeseries-modal-dialog"
+    >
+      <Modal.Header closeButton>
+        <Modal.Title>
+          {selectedStation && (
+            selectedStation.Organization
+              ? `${selectedStation.Name} - ${selectedStation.Organization}`
+              : selectedStation.Name
+          )}
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        {selectedStation && (
+          <DyGraph
+            url={stationTimeseriesUrl}
+            filename={timeseriesFilename}
+          />
+        )}
+      </Modal.Body>
+    </Modal>
+    </>
   );
 }
 
