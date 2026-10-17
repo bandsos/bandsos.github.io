@@ -1,5 +1,10 @@
 .timeseries-modal-dialog {
   --bs-modal-width: 900px;
+  --bs-modal-color: var(--color-ink);
+  --bs-modal-bg: var(--color-surface);
+  --bs-modal-border-color: var(--color-border);
+  --bs-modal-header-border-color: var(--color-border);
+  --bs-modal-footer-border-color: var(--color-border);
   width: calc(100vw - 32px);
   max-width: 900px;
 }
@@ -15,7 +20,26 @@
 
 .timeseries-modal-dialog .modal-title {
   grid-column: 2;
+  color: var(--color-brand-indigo);
+  font-weight: 650;
   text-align: center;
+}
+
+.timeseries-modal-dialog .btn-outline-secondary {
+  --bs-btn-color: var(--color-brand-indigo);
+  --bs-btn-border-color: var(--color-brand-indigo);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--color-brand-indigo);
+  --bs-btn-hover-border-color: var(--color-brand-indigo);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--color-brand-indigo);
+  --bs-btn-active-border-color: var(--color-brand-indigo);
+}
+
+.timeseries-modal-dialog .btn-close:focus-visible,
+.timeseries-modal-dialog button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 .timeseries-modal-dialog .modal-header .btn-close {
@@ -67,6 +91,130 @@
 .timeseries-chart-graph {
   width: 100%;
   height: 100%;
+}
+
+.timeseries-chart-graph .dygraph-label,
+.timeseries-chart-graph .dygraph-axis-label {
+  color: var(--color-ink);
+  font-family: var(--font-sans) !important;
+}
+
+.leaflet-container {
+  font-family: var(--font-sans);
+}
+
+.leaflet-container .leaflet-control {
+  font-family: var(--font-sans);
+}
+
+.leaflet-container .leaflet-top.leaflet-right > .leaflet-control-layers {
+  margin-bottom: 0;
+  border-radius: 0.375rem 0.375rem 0 0;
+  box-shadow: 0 2px 8px rgba(21, 27, 66, 0.16);
+}
+
+.leaflet-container .leaflet-top.leaflet-right > .leaflet-control-zoom {
+  width: 46px;
+  margin-top: 0;
+  border-top: 0;
+  border-radius: 0 0 0.375rem 0.375rem;
+  box-shadow: 0 2px 8px rgba(21, 27, 66, 0.16);
+}
+
+.leaflet-container .leaflet-top.leaflet-right > .leaflet-control-zoom a {
+  width: 44px;
+  height: 36px;
+  line-height: 34px;
+}
+
+.leaflet-container .leaflet-top.leaflet-right > .leaflet-control-zoom a + a {
+  border-top-color: var(--color-border);
+}
+
+.leaflet-container .leaflet-top.leaflet-right > .leaflet-control-layers-expanded {
+  border-radius: 0.375rem 0.375rem 0 0;
+}
+
+.leaflet-container .leaflet-bar {
+  border: 1px solid var(--color-brand-indigo);
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 8px rgba(21, 27, 66, 0.16);
+  overflow: hidden;
+}
+
+.leaflet-container .leaflet-bar a,
+.leaflet-container .leaflet-bar a:hover,
+.leaflet-container .leaflet-bar a:focus {
+  color: var(--color-brand-indigo);
+  background-color: var(--color-surface);
+}
+
+.leaflet-container .leaflet-bar a:hover,
+.leaflet-container .leaflet-bar a:focus-visible {
+  background-color: var(--color-canvas);
+  color: var(--color-link);
+}
+
+.leaflet-container .leaflet-bar a:focus-visible,
+.leaflet-container .leaflet-control-layers-toggle:focus-visible {
+  outline: 3px solid var(--color-brand-cyan);
+  outline-offset: 2px;
+  position: relative;
+  z-index: 1;
+}
+
+.leaflet-container.leaflet-touch .leaflet-control-layers,
+.leaflet-container .leaflet-control-layers {
+  color: var(--color-brand-indigo);
+  background: var(--color-surface);
+  border: 1px solid var(--color-brand-indigo);
+  border-radius: 0.375rem;
+  box-shadow: 0 2px 8px rgba(21, 27, 66, 0.16);
+}
+
+.leaflet-container .leaflet-control-layers-toggle {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Cpath fill='%23302783' d='M13 1 1 7l12 6 12-6z'/%3E%3Cpath fill='%2300a3d9' d='M1 10v4l12 6 12-6v-4l-12 6z'/%3E%3Cpath fill='%23302783' d='M1 17v3l12 6 12-6v-3l-12 6z'/%3E%3C/svg%3E");
+  background-size: 26px 26px;
+  filter: none;
+}
+
+.leaflet-container .leaflet-control-layers-expanded {
+  padding: 0.5rem 0.75rem;
+}
+
+.leaflet-container .leaflet-control-layers label {
+  color: var(--color-ink);
+}
+
+.leaflet-container .leaflet-control-layers input {
+  accent-color: var(--color-brand-indigo);
+}
+
+.leaflet-container .leaflet-control-scale .leaflet-control-scale-line {
+  color: var(--color-brand-indigo);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--color-brand-indigo);
+  font-family: var(--font-sans);
+}
+
+.leaflet-container .leaflet-control-attribution.leaflet-control {
+  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-sans);
+}
+
+.leaflet-container .leaflet-control-attribution a {
+  color: var(--color-brand-indigo);
+}
+
+.leaflet-container .leaflet-control-attribution a:hover,
+.leaflet-container .leaflet-control-attribution a:focus-visible {
+  color: var(--color-link);
+}
+
+.leaflet-container .leaflet-control-attribution a:focus-visible {
+  outline: 2px solid var(--color-brand-cyan);
+  outline-offset: 1px;
 }
 
 @media (max-width: 480px) {

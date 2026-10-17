@@ -1,11 +1,13 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
   MapContainer,
   TileLayer,
   LayersControl,
   LayerGroup,
   ScaleControl,
-  Marker
+  Marker,
+  ZoomControl,
+  useMap
 } from "react-leaflet";
 
 import { icon, latLng, latLngBounds } from "leaflet";
@@ -21,6 +23,29 @@ const icon_level = icon({
   iconUrl: marker_level,
   iconSize: [24, 24]
 });
+
+function InvalidateMapSize() {
+  const map = useMap();
+
+  useEffect(() => {
+    const container = map.getContainer();
+    let frame;
+    const resizeObserver = new ResizeObserver(() => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => map.invalidateSize({ pan: false }));
+    });
+
+    resizeObserver.observe(container);
+    map.invalidateSize({ pan: false });
+
+    return () => {
+      resizeObserver.disconnect();
+      cancelAnimationFrame(frame);
+    };
+  }, [map]);
+
+  return null;
+}
 
 // Main component
 function Map({dataurl, config, forecast, timestep, mapRequestBase, onTileLayerSettled}) {
@@ -73,10 +98,12 @@ function Map({dataurl, config, forecast, timestep, mapRequestBase, onTileLayerSe
       bounds={latLngBounds(latLng(config.bounds.south, config.bounds.west), latLng(config.bounds.north, config.bounds.east))}
       zoom={config.zoom}
       scrollWheelZoom={true}
+      zoomControl={false}
       minZoom={config.minzoom}
       maxZoom={config.maxzoom}
-      style={{ width: "100vw", height: "100%"}}
+      style={{ width: "100%", height: "100%"}}
     >
+      <InvalidateMapSize />
 
       <LayersControl position="topright">
       <LayersControl.BaseLayer checked name="OSM - Standard">
@@ -118,6 +145,8 @@ function Map({dataurl, config, forecast, timestep, mapRequestBase, onTileLayerSe
         </LayersControl.Overlay>
 
       </LayersControl>
+
+      <ZoomControl position="topright" />
       
       <TileLayer
         key={requestKey}
@@ -128,8 +157,8 @@ function Map({dataurl, config, forecast, timestep, mapRequestBase, onTileLayerSe
         eventHandlers={tileEventHandlers}
       ></TileLayer>
 
-      <Colorbar 
-        position="bottomright" 
+      <Colorbar
+        position="topleft"
         colorbar={dataurl + '/' + forecast.cycle + '/' + forecast.forecasts.elev.src + '/' + forecast.forecasts.elev.layers[0].type + '/' + 'colorbar.png'}>
       </Colorbar>
       

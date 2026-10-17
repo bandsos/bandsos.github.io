@@ -125,7 +125,7 @@ export default function App() {
   return (
     <>
     <div id="wrapper">
-      <div id="header">
+      <header id="header">
         <BasicNavbar
           sitename={config.sitename}
           navbar={config.navbar}
@@ -136,38 +136,36 @@ export default function App() {
         >
         </BasicNavbar>
         {/* <NewNavbar></NewNavbar> */}
-      </div>
+      </header>
       
       {
         forecast.available
         ? <>
-          <div id="content">
-          
-          <Map
-            dataurl={selectedforecast.dataurl}
-            config={config.map}
-            forecast={forecast.payload}
-            timestep={timestep}
-            mapRequestBase={mapRequestBase}
-            onTileLayerSettled={(requestKey, errorCount) => setMapStatus({ requestKey, errorCount })}
-          >
-          </Map>
-          </div>
-          <div id="onTop">
-              <TimeSlider
-                forecast={forecast.payload}
-                setTimestep={setTimestep}
-                mapRequestBase={mapRequestBase}
-                cycleStartTime={`${selectedforecast.date} ${selectedforecast.cycle}:00:00`}
-                mapStatus={mapStatus}
-              ></TimeSlider>
-          </div>
+          <main id="content">
+            <Map
+              dataurl={selectedforecast.dataurl}
+              config={config.map}
+              forecast={forecast.payload}
+              timestep={timestep}
+              mapRequestBase={mapRequestBase}
+              onTileLayerSettled={(requestKey, errorCount) => setMapStatus({ requestKey, errorCount })}
+            />
+          </main>
+          <footer id="onTop">
+            <TimeSlider
+              forecast={forecast.payload}
+              setTimestep={setTimestep}
+              mapRequestBase={mapRequestBase}
+              cycleStartTime={`${selectedforecast.date} ${selectedforecast.cycle}:00:00`}
+              mapStatus={mapStatus}
+            />
+          </footer>
           </>
-        : <Container>
+        : <main id="content"><Container>
           <Alert className="" variant="danger" key="danger">
             Forecast for {selectedforecast.date} cycle {selectedforecast.cycle} not available!
             </Alert>
-          </Container>
+          </Container></main>
       }
     </div>
 

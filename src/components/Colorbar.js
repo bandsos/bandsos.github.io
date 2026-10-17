@@ -9,10 +9,13 @@ function Colorbar(props) {
 
   L.Control.Colorbar = L.Control.extend({
     onAdd: function (map) {
-      var container = L.DomUtil.create("div", "colorbar-container")
+      var container = L.DomUtil.create("div", "colorbar-container");
+      var label = L.DomUtil.create("span", "colorbar-label", container);
       var img = L.DomUtil.create("img", "colorbar", container);
 
+      label.textContent = "Water level (m)";
       img.src = props.colorbar;
+      img.alt = "Forecast value color scale";
       // img.style.width = "75px";
 
       return container;

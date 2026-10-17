@@ -1,3 +1,62 @@
+.bandsos-navbar.navbar.bg-light {
+    --bs-navbar-color: var(--color-brand-indigo);
+    --bs-navbar-hover-color: var(--color-link);
+    --bs-navbar-active-color: var(--color-brand-indigo);
+    --bs-navbar-brand-color: var(--color-brand-indigo);
+    --bs-navbar-brand-hover-color: var(--color-link);
+    --bs-navbar-toggler-border-color: var(--color-brand-indigo);
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23302783' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-color: var(--color-surface) !important;
+    border-bottom: 3px solid var(--color-brand-indigo);
+    box-shadow: 0 2px 10px rgba(21, 27, 66, 0.12);
+}
+
+.bandsos-navbar .navbar-brand,
+.bandsos-navbar .navbar-nav .nav-link {
+    color: var(--bs-navbar-color);
+}
+
+.bandsos-navbar .navbar-brand:hover,
+.bandsos-navbar .navbar-nav .nav-link:hover {
+    color: var(--bs-navbar-hover-color);
+}
+
+.bandsos-navbar .navbar-toggler:hover {
+    --bs-navbar-toggler-border-color: var(--color-link);
+}
+
+.bandsos-navbar .dropdown-menu {
+    --bs-dropdown-link-color: var(--color-brand-indigo);
+    --bs-dropdown-link-hover-color: var(--color-link);
+    --bs-dropdown-link-hover-bg: var(--color-canvas);
+    --bs-dropdown-link-active-color: #fff;
+    --bs-dropdown-link-active-bg: var(--color-brand-indigo);
+    border-color: var(--color-border);
+    box-shadow: 0 0.5rem 1rem rgba(21, 27, 66, 0.16);
+}
+
+.bandsos-navbar .dropdown-menu .dropdown-item {
+    color: var(--color-brand-indigo);
+}
+
+.bandsos-navbar .dropdown-menu .dropdown-item:hover:not(:disabled) {
+    color: var(--color-link);
+    background-color: var(--color-canvas);
+}
+
+.bandsos-navbar .dropdown-item:focus-visible {
+    color: var(--color-link);
+    background-color: var(--color-canvas);
+}
+
+.bandsos-navbar .dropdown-item:focus-visible,
+.bandsos-navbar .nav-link:focus-visible,
+.bandsos-navbar .navbar-brand:focus-visible,
+.bandsos-navbar .navbar-toggler:focus-visible {
+    outline: 3px solid var(--color-brand-cyan);
+    outline-offset: 3px;
+}
+
 @media (max-width: 575.98px) {
     .bandsos-navbar > .bandsos-navbar-container {
         flex-wrap: nowrap;
