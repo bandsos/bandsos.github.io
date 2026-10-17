@@ -1,8 +1,13 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
+import { afterEach, expect, test, vi } from "vitest";
 import App from './App';
 
-test('renders learn react link', () => {
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
+
+test('renders the forecast application shell', () => {
+  vi.stubGlobal("fetch", vi.fn(() => new Promise(() => {})));
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(screen.getByText("BandSOS")).toBeInTheDocument();
 });

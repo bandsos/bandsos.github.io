@@ -33,3 +33,22 @@ Funding duration: 2 years.
 
 ## Reference
 Khan, Md. J. U., Durand, F., Bertin, X., Testut, L., Krien, Y., Islam, A. K. M. S., Pezerat, M., and Hossain, S.: Towards an efficient storm surge and inundation forecasting system over the Bengal delta: chasing the Supercyclone Amphan, Nat. Hazards Earth Syst. Sci., 21, 2523–2541, https://doi.org/10.5194/nhess-21-2523-2021, 2021.
+
+## Local development setup
+
+Install Node.js 24.15 or newer (which includes npm), clone this repository, and change into the project directory. Install the exact dependency versions recorded in `package-lock.json` with `npm ci`, then start the Vite development server:
+
+```sh
+npm ci
+npm start
+```
+
+Open the local URL printed by Vite, usually `http://localhost:5173`. The server supports hot reload as you edit files.
+
+Useful project checks:
+
+```sh
+npm test
+npm run lint
+npm run build
+```
