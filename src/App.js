@@ -121,29 +121,18 @@ export default function App() {
   return (
     <>
     <div id="wrapper">
-      {
-        platformStatus.available
-        ? <div id="header">
-          <BasicNavbar
-            sitename={config.sitename}
-            navbar={config.navbar}
-            forecast={selectedforecast}
-            setForecast={setSelectedForecast}
-            cycles={config.cycles}
-          >
-          </BasicNavbar>
-          {/* <NewNavbar></NewNavbar> */}
-          </div>
-        : <div id="header">
-          <BasicNavbar
-            sitename={config.sitename}
-            navbar={config.navbar}
-            forecast={{'date':'', 'cycle':''}}
-            setForecast={setSelectedForecast}
-            cycles={config.cycles}
-          ></BasicNavbar>
-          </div>
-      }
+      <div id="header">
+        <BasicNavbar
+          sitename={config.sitename}
+          navbar={config.navbar}
+          forecast={selectedforecast}
+          setForecast={setSelectedForecast}
+          cycles={config.cycles}
+          maxForecast={platformStatus.available ? platformStatus.data.lastforecast : null}
+        >
+        </BasicNavbar>
+        {/* <NewNavbar></NewNavbar> */}
+      </div>
       
       {
         forecast.available
