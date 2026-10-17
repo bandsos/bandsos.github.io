@@ -1,0 +1,85 @@
+.timeseries-modal-dialog {
+  --bs-modal-width: 900px;
+  width: calc(100vw - 32px);
+  max-width: 900px;
+}
+
+.timeseries-modal-dialog .modal-body {
+  overflow-x: hidden;
+}
+
+.timeseries-modal-dialog .modal-header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+}
+
+.timeseries-modal-dialog .modal-title {
+  grid-column: 2;
+  text-align: center;
+}
+
+.timeseries-modal-dialog .modal-header .btn-close {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+}
+
+.timeseries-toolbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.timeseries-download-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.timeseries-view-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.timeseries-view-label {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+}
+
+.timeseries-export-error {
+  margin-bottom: 0.75rem;
+}
+
+.timeseries-chart {
+  width: 100%;
+  height: min(320px, max(140px, calc(100vh - 220px)));
+  height: min(320px, max(140px, calc(100dvh - 220px)));
+}
+
+.timeseries-chart-graph {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 480px) {
+  .timeseries-modal-dialog .modal-body {
+    padding: 0.5rem;
+  }
+
+  .timeseries-toolbar {
+    font-size: 0.7rem;
+  }
+
+  .timeseries-toolbar .btn {
+    padding: 0.25rem 0.35rem;
+    font-size: 0.7rem;
+  }
+}
