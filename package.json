@@ -10,6 +10,7 @@
     "bootstrap": "^5.2.0",
     "dygraphs": "^2.1.0",
     "leaflet": "^1.7.1",
+    "leaflet.markercluster": "^1.5.3",
     "react": "^17.0.2",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^17.0.2",

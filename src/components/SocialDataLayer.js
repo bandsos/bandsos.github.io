@@ -1,14 +1,7 @@
-import { useLeafletContext } from "@react-leaflet/core";
-import {
-  GeoJSON
-} from "react-leaflet";
+import { GeoJSON } from "react-leaflet";
 import L from "leaflet";
-import { useEffect } from "react";
 
 const SocialDataLayer = function ({ data }) {
-
-  const context = useLeafletContext();
-
   function getColor(d) {
     // Generated using colorbrewer
     return d > 0.9 ? '#67000d' :
@@ -30,10 +23,15 @@ const SocialDataLayer = function ({ data }) {
   }
 
   const jsonPointToLayer = function (feature, latlng) {
-    return new L.CircleMarker(latlng, {
-      radius: 5,
-      fillOpacity: 0.85
-    })
+    const color = getColor(feature.properties.SSVI);
+    const icon = L.divIcon({
+      className: "social-human-marker",
+      html: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5" fill="${color}" stroke="#fff" stroke-width="1.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2H5Z" fill="${color}" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>`,
+      iconSize: [24, 24],
+      iconAnchor: [12, 21]
+    });
+
+    return new L.Marker(latlng, { icon });
   }
 
   const jsonOnEachFeature = function (feature, layer) {

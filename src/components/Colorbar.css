@@ -12,6 +12,10 @@
     box-shadow: 0 2px 8px rgba(21, 27, 66, 0.16);
 }
 
+.leaflet-top.leaflet-left > .colorbar-container {
+    margin-top: 76px;
+}
+
 .colorbar-label {
     color: var(--color-brand-indigo);
     font-size: 0.9rem;
