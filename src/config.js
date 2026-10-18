@@ -4,16 +4,15 @@ let config = {
     "sitename":"BandSOS",
     "dataurl":"https://bandsos.github.io",
     "map":{
-        "mapcenter":[22, 90], // [lat, long], Bangladesh
         "bounds":{
-            "east":85,
-            "west":95,
+            "east":93,
+            "west":87,
             "south":20,
-            "north":24
+            "north":25
         },
-        "zoom":9,
         "minzoom":6,
-        "maxzoom":10
+        "maxzoom":10,
+        "stationSearchZoom":10
     },
     "navbar":{
         "branding":{

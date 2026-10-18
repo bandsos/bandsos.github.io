@@ -103,6 +103,348 @@
   font-family: var(--font-sans);
 }
 
+.leaflet-container .leaflet-top.leaflet-right.map-toolbar-container {
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.map-toolbar {
+  display: flex;
+  width: min(760px, calc(100vw - 20px));
+  margin-left: 10px;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem;
+  position: relative;
+  border: 1px solid var(--color-brand-indigo);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  box-shadow: 0 2px 8px rgba(21, 27, 66, 0.2);
+}
+
+.map-toolbar .map-toolbar-search {
+  width: 100%;
+  min-width: 0;
+  flex: 1 1 auto;
+  padding-left: 2rem;
+  border-color: var(--color-border);
+}
+
+.map-toolbar-search:focus {
+  border-color: var(--color-brand-cyan);
+  box-shadow: 0 0 0 0.2rem var(--color-focus);
+}
+
+.map-toolbar-layer-toggles,
+.map-toolbar-map-controls {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.map-toolbar-separator {
+  width: 1px;
+  height: 26px;
+  flex: 0 0 1px;
+  background: var(--color-border);
+}
+
+.map-toolbar-search-control {
+  position: relative;
+  min-width: 120px;
+  flex: 1 1 220px;
+}
+
+.map-toolbar-search-input {
+  position: relative;
+  min-width: 0;
+}
+
+.map-toolbar-search-icon {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 0.65rem;
+  width: 17px;
+  height: 17px;
+  transform: translateY(-50%);
+  fill: none;
+  pointer-events: none;
+  stroke: var(--color-muted);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.map-toolbar-toggle,
+.map-toolbar-icon-button {
+  display: inline-flex;
+  width: 42px;
+  min-height: 38px;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-brand-indigo);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.map-toolbar-icon-button {
+  color: var(--color-brand-indigo);
+}
+
+.map-toolbar-icon-button:hover {
+  border-color: var(--color-brand-indigo);
+  background: var(--color-canvas);
+  color: var(--color-link);
+}
+
+.map-toolbar-icon-button svg {
+  display: block;
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.map-toolbar .map-toolbar-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-color: var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-brand-indigo);
+}
+
+.map-toolbar-toggle svg {
+  display: block;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
+}
+
+.map-toolbar-basemap-control {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.map-toolbar-basemap-menu {
+  position: absolute;
+  z-index: 1001;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: max-content;
+  padding: 0.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  background: var(--color-surface);
+  box-shadow: 0 4px 14px rgba(21, 27, 66, 0.2);
+}
+
+.map-toolbar-basemap-option {
+  display: block;
+  width: 100%;
+  padding: 0.45rem 0.65rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: transparent;
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.map-toolbar-basemap-option:hover,
+.map-toolbar-basemap-option[aria-checked="true"] {
+  background: var(--color-canvas);
+  color: var(--color-brand-indigo);
+}
+
+.map-toolbar-basemap-option[aria-checked="true"] {
+  font-weight: 650;
+}
+
+.map-toolbar-basemap-option:focus-visible {
+  outline: 3px solid var(--color-brand-cyan);
+  outline-offset: -2px;
+}
+
+.map-toolbar-marker-shape,
+.map-toolbar-person-shape {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.map-toolbar .map-toolbar-toggle.is-active .map-toolbar-marker-shape,
+.map-toolbar .map-toolbar-toggle.is-active .map-toolbar-person-shape {
+  fill: currentColor;
+}
+
+.map-toolbar .map-toolbar-toggle:not(.is-active) .map-toolbar-marker-shape,
+.map-toolbar .map-toolbar-toggle:not(.is-active) .map-toolbar-person-shape {
+  fill: none;
+}
+
+.map-toolbar-marker-wave {
+  fill: none;
+  stroke: var(--color-brand-cyan);
+  stroke-linecap: round;
+  stroke-width: 1.5;
+}
+
+.map-toolbar-toggle:hover {
+  border-color: var(--color-brand-indigo);
+  background: var(--color-canvas);
+  color: var(--color-link);
+}
+
+.map-toolbar .map-toolbar-toggle.is-active {
+  border-color: var(--color-brand-indigo);
+  background: var(--color-brand-indigo);
+  color: #fff;
+}
+
+.map-toolbar .map-toolbar-toggle:not(.is-active) .map-toolbar-marker-wave {
+  stroke: var(--color-brand-cyan);
+}
+
+.map-toolbar .map-toolbar-toggle.is-active .map-toolbar-marker-wave {
+  stroke: #fff;
+}
+
+.map-toolbar-toggle:focus-visible,
+.map-toolbar-icon-button:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid var(--color-brand-cyan);
+  outline-offset: 1px;
+}
+
+.station-search-results {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 4px);
+  right: auto;
+  left: 0;
+  width: 100%;
+  max-height: min(280px, 45vh);
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  background: var(--color-surface);
+  box-shadow: 0 4px 14px rgba(21, 27, 66, 0.2);
+}
+
+.station-search-result {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  text-align: left;
+}
+
+.station-search-result:last-child {
+  border-bottom: 0;
+}
+
+.station-search-result:hover,
+.station-search-result[aria-selected="true"] {
+  background: var(--color-canvas);
+}
+
+.station-search-result:focus-visible {
+  position: relative;
+  outline: 3px solid var(--color-brand-cyan);
+  outline-offset: -3px;
+}
+
+.station-search-result small {
+  color: var(--color-muted);
+}
+
+.station-search-empty {
+  padding: 0.625rem 0.75rem;
+  color: var(--color-muted);
+}
+
+.station-marker-icon {
+  border: 0;
+  background: transparent;
+}
+
+.station-marker-icon svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 1px 2px rgba(21, 27, 66, 0.55));
+}
+
+.social-human-marker {
+  border: 0;
+  background: transparent;
+}
+
+.social-human-marker svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  overflow: visible;
+  filter: drop-shadow(0 1px 2px rgba(21, 27, 66, 0.65));
+}
+
+.station-cluster {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+}
+
+.station-cluster span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--color-brand-indigo);
+  box-shadow: 0 1px 3px rgba(21, 27, 66, 0.4);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.station-cluster-medium span {
+  width: 32px;
+  height: 32px;
+}
+
+.station-cluster-large span {
+  width: 36px;
+  height: 36px;
+  font-size: 0.8125rem;
+}
+
+.leaflet-marker-icon.station-cluster:focus-visible {
+  outline: 3px solid var(--color-brand-cyan);
+  outline-offset: 2px;
+}
+
 .leaflet-container .leaflet-control {
   font-family: var(--font-sans);
 }
@@ -218,6 +560,50 @@
 }
 
 @media (max-width: 480px) {
+  .map-toolbar {
+    gap: 0.2rem;
+    padding: 0.25rem;
+  }
+
+  .map-toolbar .map-toolbar-search {
+    min-width: 0;
+    padding-right: 0.4rem;
+    padding-left: 1.9rem;
+  }
+
+  .map-toolbar-search-control {
+    min-width: 75px;
+    flex-basis: 100px;
+  }
+
+  .map-toolbar-layer-toggles,
+  .map-toolbar-map-controls {
+    gap: 0.2rem;
+  }
+
+  .map-toolbar-search-control {
+    position: static;
+  }
+
+  .map-toolbar-search-input {
+    width: 100%;
+  }
+
+  .station-search-results {
+    right: 0;
+    width: auto;
+  }
+
+  .map-toolbar-toggle {
+    width: 36px;
+    flex-basis: 36px;
+  }
+
+  .map-toolbar-icon-button {
+    width: 36px;
+    flex-basis: 36px;
+  }
+
   .timeseries-modal-dialog .modal-body {
     padding: 0.5rem;
   }
