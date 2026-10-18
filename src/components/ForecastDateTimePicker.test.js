@@ -19,7 +19,13 @@ test("opens one side-by-side date and cycle picker and builds the forecast folde
     />
   );
 
-  fireEvent.click(screen.getByRole("button", { name: "Forecast date and cycle" }));
+  const trigger = screen.getByRole("button", {
+    name: /Forecast date and cycle: .* · 06Z/
+  });
+  expect(trigger.querySelector(".forecast-picker-compact-day")).toHaveTextContent("26");
+  expect(trigger.querySelector(".forecast-picker-compact-month")).toHaveTextContent("May");
+  expect(trigger.querySelector(".forecast-picker-compact-cycle")).toHaveTextContent("06z");
+  fireEvent.click(trigger);
   const dialog = screen.getByRole("dialog", { name: "Forecast Cycle" });
   const calendar = within(dialog).getByRole("region", { name: "Forecast date" });
   const day = Array.from(calendar.querySelectorAll(".forecast-calendar-day"))
@@ -66,7 +72,7 @@ test("disables dates and cycles after the latest available forecast", () => {
     />
   );
 
-  fireEvent.click(screen.getByRole("button", { name: "Forecast date and cycle" }));
+  fireEvent.click(screen.getByRole("button", { name: /Forecast date and cycle:/ }));
   const dialog = screen.getByRole("dialog", { name: "Forecast Cycle" });
   const calendar = within(dialog).getByRole("region", { name: "Forecast date" });
   const unavailableDate = within(calendar).getByRole("gridcell", { name: "May 28, 2024" });
@@ -98,7 +104,7 @@ test("resets the cycle to 00Z when the selected date changes", () => {
     />
   );
 
-  fireEvent.click(screen.getByRole("button", { name: "Forecast date and cycle" }));
+  fireEvent.click(screen.getByRole("button", { name: /Forecast date and cycle:/ }));
   let dialog = screen.getByRole("dialog", { name: "Forecast Cycle" });
   let calendar = within(dialog).getByRole("region", { name: "Forecast date" });
   fireEvent.click(within(calendar).getByRole("gridcell", { name: "May 26, 2024" }));
@@ -160,7 +166,7 @@ test("resets the selection to the last available forecast", () => {
     />
   );
 
-  fireEvent.click(screen.getByRole("button", { name: "Forecast date and cycle" }));
+  fireEvent.click(screen.getByRole("button", { name: /Forecast date and cycle:/ }));
   const dialog = screen.getByRole("dialog", { name: "Forecast Cycle" });
   expect(within(dialog).getByRole("heading", { name: "Forecast Cycle" })).toBeInTheDocument();
   fireEvent.click(within(dialog).getByRole("button", { name: "Reset to last forecast" }));
