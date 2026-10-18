@@ -23,6 +23,10 @@
     border-color: #251d69;
 }
 
+.forecast-picker-compact-date {
+    display: none;
+}
+
 .forecast-picker-trigger:focus-visible,
 .forecast-picker-popover button:focus-visible {
     outline: 3px solid var(--color-focus);
@@ -216,6 +220,41 @@
 }
 
 @media (max-width: 575.98px) {
+    .forecast-picker-full-date {
+        display: none;
+    }
+
+    .forecast-picker-compact-date {
+        align-items: center;
+        display: flex;
+        line-height: 1;
+    }
+
+    .forecast-picker-compact-calendar {
+        align-items: center;
+        display: flex;
+        gap: 0.25rem;
+    }
+
+    .forecast-picker-compact-day {
+        font-size: 1.1em;
+    }
+
+    .forecast-picker-compact-details {
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .forecast-picker-compact-month {
+        font-size: 0.68em;
+    }
+
+    .forecast-picker-compact-cycle {
+        font-size: 0.78em;
+    }
+
     .forecast-picker-content {
         gap: 0.5rem;
     }

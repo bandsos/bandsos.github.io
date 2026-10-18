@@ -11,12 +11,24 @@ function BasicNavbar({sitename, navbar, forecast, setForecast, cycles, maxForeca
     return (
         <Navbar bg="light" expand="lg" className="bandsos-navbar">
         <Container className="bandsos-navbar-container">
+            <div className="bandsos-navbar-topbar">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Brand href="/" className="bandsos-navbar-logo">
                     <img alt={sitename} src={navbar.branding.icon} height="35px"/>
             </Navbar.Brand>
+            <Row className="bandsos-navbar-picker-row">
+                <Col className="bandsos-navbar-picker-col">
+                    <ForecastDateTimePicker
+                        forecast={forecast}
+                        setForecast={setForecast}
+                        cycles={cycles}
+                        maxForecast={maxForecast}
+                    />
+                </Col>
+            </Row>
+            </div>
             <Navbar.Collapse id="basic-navbar-nav">
-            <Navbar.Brand href="/"><b>BandSOS</b></Navbar.Brand>
+            <Navbar.Brand href="/" className="bandsos-navbar-menu-brand"><b>BandSOS</b></Navbar.Brand>
             <Nav className="me-auto">
                 <NavDropdown title="Data">
                     <NavDropdown.Item href="https://zenodo.org/doi/10.5281/zenodo.10371338">Intertidal Topography</NavDropdown.Item>
@@ -45,16 +57,6 @@ function BasicNavbar({sitename, navbar, forecast, setForecast, cycles, maxForeca
                 </NavDropdown>
             </Nav>
             </Navbar.Collapse>
-            <Row className="bandsos-navbar-picker-row">
-                <Col className="bandsos-navbar-picker-col">
-                    <ForecastDateTimePicker
-                        forecast={forecast}
-                        setForecast={setForecast}
-                        cycles={cycles}
-                        maxForecast={maxForecast}
-                    />
-                </Col>
-            </Row>
         </Container>
         </Navbar>
     );

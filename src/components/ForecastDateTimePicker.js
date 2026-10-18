@@ -25,11 +25,25 @@ function formatSelectedDate(date, cycle) {
     return `${formattedDate} · ${cycle}Z`;
 }
 
+function getCompactDateParts(date) {
+    if (!date) {
+        return null;
+    }
+
+    const [year, month, day] = date.split("-").map(Number);
+    const dateValue = new Date(Date.UTC(year, month - 1, day));
+    return {
+        day,
+        month: dateValue.toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" })
+    };
+}
+
 function ForecastDateTimePicker({ forecast, setForecast, cycles, maxForecast }) {
     const [isOpen, setIsOpen] = useState(false);
     const [visibleMonth, setVisibleMonth] = useState(monthStart(forecast.date || MIN_DATE));
     const pickerRef = useRef(null);
     const triggerRef = useRef(null);
+    const compactDateParts = getCompactDateParts(forecast.date);
 
     useEffect(() => {
         if (forecast.date) {
@@ -92,12 +106,29 @@ function ForecastDateTimePicker({ forecast, setForecast, cycles, maxForecast }) 
                 ref={triggerRef}
                 className="forecast-picker-trigger"
                 type="button"
-                aria-label="Forecast date and cycle"
+                aria-label={`Forecast date and cycle: ${formatSelectedDate(forecast.date, forecast.cycle)}`}
                 aria-haspopup="dialog"
                 aria-expanded={isOpen}
                 onClick={() => setIsOpen(!isOpen)}
             >
-                <span>{formatSelectedDate(forecast.date, forecast.cycle)}</span>
+                <span className="forecast-picker-full-date" aria-hidden="true">
+                    {formatSelectedDate(forecast.date, forecast.cycle)}
+                </span>
+                <span className="forecast-picker-compact-date" aria-hidden="true">
+                    {compactDateParts ? (
+                        <span className="forecast-picker-compact-calendar">
+                            <span className="forecast-picker-compact-day">{compactDateParts.day}</span>
+                            <span className="forecast-picker-compact-details">
+                                <span className="forecast-picker-compact-month">{compactDateParts.month}</span>
+                                {forecast.cycle && (
+                                    <span className="forecast-picker-compact-cycle">{forecast.cycle}z</span>
+                                )}
+                            </span>
+                        </span>
+                    ) : (
+                        <span>Select forecast date and cycle</span>
+                    )}
+                </span>
                 <span className="forecast-picker-caret" aria-hidden="true">▾</span>
             </button>
             {isOpen && (
