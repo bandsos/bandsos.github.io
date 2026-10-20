@@ -1,8 +1,16 @@
 import logo from "./assets/icons/logo.png";
 
+const dataurl = (
+    import.meta.env.VITE_DATA_URL ??
+    (import.meta.env.DEV ? "https://coastal.ffwc.gov.bd" : "")
+).replace(/\/+$/, "");
+const statusurl = import.meta.env.VITE_STATUS_URL ??
+    "https://raw.githubusercontent.com/bandsos/status/refs/heads/main/status.json";
+
 let config = {
     "sitename":"BandSOS",
-    "dataurl":"https://bandsos.github.io",
+    dataurl,
+    statusurl,
     "map":{
         "bounds":{
             "east":93,

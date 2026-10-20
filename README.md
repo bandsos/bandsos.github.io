@@ -45,6 +45,30 @@ npm start
 
 Open the local URL printed by Vite, usually `http://localhost:5173`. The server supports hot reload as you edit files.
 
+### Local forecast and status data
+
+Vite environment variables configure the forecast-data base URL and platform status JSON independently:
+
+- `VITE_DATA_URL` defaults to `https://coastal.ffwc.gov.bd` during local development and to an empty base in production. The empty production base makes forecast requests same-origin (for example, `/2026102006/manifest.json`).
+- `VITE_STATUS_URL` defaults to the public status file at `https://raw.githubusercontent.com/bandsos/status/refs/heads/main/status.json`.
+
+To use live data while running locally, create `.env.development.local` in the project root:
+
+```env
+VITE_DATA_URL=https://coastal.ffwc.gov.bd
+# Optional; this is the default status URL.
+VITE_STATUS_URL=https://raw.githubusercontent.com/bandsos/status/refs/heads/main/status.json
+```
+
+To serve a local copy instead, place the status file at `public/status.json` and mirror the forecast data under `public/data/`, including each cycle's `manifest.json` and all files it references (tiles, station CSVs, and colorbar). Configure:
+
+```env
+VITE_DATA_URL=/data
+VITE_STATUS_URL=/status.json
+```
+
+You can select a locally available forecast cycle directly with `http://localhost:5173/?cycle=YYYYMMDDCC`. The `.env.development.local` file is ignored by Git. Vite embeds these values when it builds the app, so a production override requires rebuilding and redeploying; these client-side values must not contain secrets.
+
 Useful project checks:
 
 ```sh
