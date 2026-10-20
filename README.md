@@ -45,6 +45,10 @@ npm start
 
 Open the local URL printed by Vite, usually `http://localhost:5173`. The server supports hot reload as you edit files.
 
+### GitHub Pages custom domain
+
+The published site uses `coastal.ffwc.gov.bd`. Keep that hostname in `public/CNAME`: Vite copies it into `dist`, and the Pages deployment publishes it alongside the built site so deployments retain the custom domain.
+
 ### Local forecast and status data
 
 Vite environment variables configure the forecast-data base URL and platform status JSON independently:
