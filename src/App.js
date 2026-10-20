@@ -31,8 +31,7 @@ export default function App() {
   // Load platform status
   const [platformStatus, setPlatformStatus] = useState({"available":false, "data":{}});
   useEffect( () => {
-    // const platformStatusUrl = config.dataurl + '/status/status.json'; // FIXME
-    const platformStatusUrl = 'https://raw.githubusercontent.com/bandsos/status/refs/heads/main/status.json';
+    const platformStatusUrl = config.statusurl;
     fetch(platformStatusUrl)
     .then( async response => {
       const data = await response.json();
@@ -46,7 +45,7 @@ export default function App() {
     })
     .catch(error => {
       setPlatformStatus({errormessage: error.toString()});
-      console.error('Error loading manifest from ', platformStatusUrl);
+      console.error('Error loading platform status from ', platformStatusUrl);
     });
   }, []);
 
